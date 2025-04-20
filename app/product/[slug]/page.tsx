@@ -251,14 +251,23 @@ type PageProps = {
   };
 };
 
+// ✅ Fix: Required for dynamic routes in Next.js App Router
+export async function generateStaticParams() {
+  return [
+    { slug: "digitalparking" },
+    { slug: "digitalheavyduty" },
+    { slug: "digitalwall" }, // add any other possible slugs here
+  ];
+}
+
 export default function Page({ params }: PageProps) {
   const { slug } = params;
   const proData =
     slug === "digitalparking"
       ? data[0]
       : slug === "digitalheavyduty"
-      ? data[1]
-      : data[2];
+        ? data[1]
+        : data[2];
 
   return (
     <div className="container flex flex-col gap-6 py-8">

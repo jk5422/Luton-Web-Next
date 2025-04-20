@@ -260,7 +260,7 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
   const { slug } = params;
   const proData =
     slug === "digitalparking"
